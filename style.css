@@ -7,10 +7,6 @@ html{
 	background-size: cover;
 }
 
-body{
- min-height:100%;
- }
-
 .holla {
 	position: absolute;
 	font-family: 'Amatic SC', cursive;
