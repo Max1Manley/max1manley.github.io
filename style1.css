@@ -1,0 +1,38 @@
+#all {
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-image: url("http://i.imgur.com/i8viCPK.png");
+	background-repeat:no-repeat;
+	background-position: center center;
+	-webkit-background-size: cover;
+	background-size: cover;
+	color: white;
+}
+
+#left {
+	text-align: center;
+	padding-right: 40px;
+}
+
+#right{
+	text-align: center;
+	padding-left: 40px;
+}
+
+#right button {
+	font-size: 18px;
+	background-color: purple;
+	color: white;
+	border: 0px;
+	padding: 5px;
+}
+
+#left button {
+	font-size: 18px;
+	background-color: gold;
+	color: black;
+	border: 0px;
+	padding: 5px;
+}
