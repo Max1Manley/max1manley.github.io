@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Tic Tac Toe</title>
+</head>
+<body>
+	<h1 id="h1" class="center">X goes first!</h1>
+	<button id="button" class="center" onclick="reset()">Reset</button>
+	<br>
+	<div id="board">
+
+		<table>
+			<tr>
+				<td id="tl" class="box" onclick="fillBox(this)"></td>
+				<td id="tm" class="box" onclick="fillBox(this)"></td>
+				<td id="tr" class="box" onclick="fillBox(this)"></td>
+			</tr>
+
+			<br>
+
+			<tr>
+				<td id="ml" class="box" onclick="fillBox(this)"></td>
+				<td id="mm" class="box" onclick="fillBox(this)"></td>
+				<td id="mr" class="box" onclick="fillBox(this)"></td>
+			</tr>
+
+			<br>
+
+			<tr>
+				<td id="bl" class="box" onclick="fillBox(this)"></td>
+				<td id="bm" class="box" onclick="fillBox(this)"></td>
+				<td id="br" class="box" onclick="fillBox(this)"></td>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript" src="tictactoe.js"></script>
+</body>
+</html>
