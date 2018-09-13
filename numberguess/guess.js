@@ -19,7 +19,7 @@ const init = (event) => {
 	}
 }
 
-const onit = () => {
+const onit = (event) => {
 	if (input.value === `${winningNumber}` && i < 5) {
 		showRight();
 		input.value = ``;
