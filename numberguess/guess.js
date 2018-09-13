@@ -19,6 +19,20 @@ const init = (event) => {
 	}
 }
 
+const onit = () => {
+	if (input.value === `${winningNumber}` && i < 5) {
+		showRight();
+		input.value = ``;
+	}
+	else if (input.value !== `${winningNumber}`  && i < 5) {
+		showWrong();
+		input.value = ``;
+	}
+	else if (i >= 5) {
+		youLost();
+	}
+}
+
 const showRight = () => {
 	alert("You're Right!");
 }
@@ -36,4 +50,5 @@ const showAnswer = () => {
 	alert(`Correct answer is ${winningNumber}`);
 }
 
+button.addEventListener("click", onit);
 input.addEventListener("keypress", init);
