@@ -50,5 +50,7 @@ const showAnswer = () => {
 	alert(`Correct answer is ${winningNumber}`);
 }
 
+if(button){
 button.addEventListener("click", onit);
+}
 input.addEventListener("keypress", init);
