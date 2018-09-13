@@ -1,5 +1,5 @@
 let input = document.getElementById("input");
-let button = document.getElementsByTagName("button")[0];
+let button = document.getElementById("button");
 let textArea = document.getElementsByTagName("textarea")[0];
 let h3 = document.getElementsByTagName("h3")[0];
 let i = 0;
