@@ -1,0 +1,11 @@
+live_loop :foo do
+  use_synth :dark_ambience
+  play_chord chord(:C, :major), amp: 10, attack: 0.25, sustain: 3, release: 0.25
+  sleep 3.25
+  play_chord chord(:G, :minor), amp: 10, attack: 0.25, sustain: 3, release: 0.25
+  sleep 3.25
+  play_chord chord(:D, :minor), amp: 10, attack: 0.25, sustain: 3, release: 0.25
+  sleep 3.25
+  play_chord chord(:F, :major), amp: 10, attack: 0.25, sustain: 3, release: 0.25
+  sleep 3.25
+end

@@ -1,0 +1,178 @@
+<html>
+	<head>
+		<title>Three.js Art Gallery</title>
+		<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
+		<style>
+			body { 
+				margin: 0; 
+			}
+			canvas { 
+				width: 100%; 
+				height: 100%; 
+			}
+			audio { 
+				position: absolute; 
+				top: 0px; 
+				width: 20%; 
+			}
+			#directions { 
+				position: absolute; 
+				top: 15px; 
+				margin-left: 22%; 
+				color: limegreen; 
+				font-size: 17px;
+				font-family: 'Share Tech Mono', monospace;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!-- Audio created by code with SonicPi -->
+		<audio controls loop>
+			<source src="4chords.mp3" type="audio/mp3">
+		</audio>
+
+		<div id="directions">Click & drag to spin. Scroll to zoom.</div>
+
+		<!-- Import THREE.JS scripts -->
+		<script src="three.js"></script>
+		<script src="orbitcontrols.js"></script>
+		
+		<script>
+
+			// Setting scene, camera, and lighting
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+			var light = new THREE.AmbientLight(0x404040, 2.75);
+			scene.add( light );
+
+			camera.position.z = 20;
+
+			var light = new THREE.PointLight( 0xff0000, 1, 100 );
+			light.position.set( 50, 50, 50 );
+			scene.add( light );
+
+			//Setting render space
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			//Creating the shapes and images
+
+			//cylinderCore
+			var geometry = new THREE.CylinderGeometry( 2.5, 2.5, 5, 32 );
+			var material = new THREE.MeshLambertMaterial( {color: 0xffffff} );
+			var cylinder = new THREE.Mesh( geometry, material );
+			scene.add( cylinder );
+
+			//Cube0
+			var geometry0 = new THREE.BoxGeometry( 9.92, 6, 0.1 );
+			var material0 = new THREE.MeshLambertMaterial( {
+				map: new THREE.TextureLoader().load('images/pexels-photo-210186.jpeg')
+			} );
+			var cube0 = new THREE.Mesh( geometry0, material0 );
+			scene.add( cube0 );
+			cube0.position.z = 14;
+
+			//Cube1
+			var geometry1 = new THREE.BoxGeometry( 11.09, 6, 0.1 );
+			var material1 = new THREE.MeshLambertMaterial( {
+				map: new THREE.TextureLoader().load('images/pexels-photo-248771.jpeg')
+			} );
+			var cube1 = new THREE.Mesh( geometry1, material1 );
+			scene.add( cube1 );
+			cube1.position.z = -14;	
+
+			//Cube2
+			// var geometry2 = new THREE.BoxGeometry( 6, 0.1, 6 );
+			// var material2 = new THREE.MeshLambertMaterial( {
+			// 	map: new THREE.TextureLoader().load('https://images.unsplash.com/photo-1533157950006-c38844053d55?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2b9b3f6614f268c37d663819ff8e8902&auto=format&fit=crop&w=700&q=80')
+			// } );
+			// var cube2 = new THREE.Mesh( geometry2, material2 );
+			// scene.add( cube2 );
+			// cube2.position.y = 14;		
+
+			//Cube3
+			var geometry3 = new THREE.BoxGeometry( 0.1, 6, 11.75 );
+			var material3 = new THREE.MeshLambertMaterial( {
+				map: new THREE.TextureLoader().load('images/pexels-photo-414171.jpeg')
+			} );
+			var cube3 = new THREE.Mesh( geometry3, material3 );
+			scene.add( cube3 );
+			cube3.position.x = 14;		
+
+			//Cube4
+			var geometry4 = new THREE.BoxGeometry( 0.1, 6, 11.37 );
+			var material4 = new THREE.MeshLambertMaterial( {
+				map: new THREE.TextureLoader().load('images/pexels-photo-440731.jpeg')
+			} );
+			var cube4 = new THREE.Mesh( geometry4, material4 );
+			scene.add( cube4 );		
+			cube4.position.x = -14;
+
+			//Cube5
+			var geometry5 = new THREE.BoxGeometry( 0.1, 6, 9 );
+			var material5 = new THREE.MeshLambertMaterial( {
+				map: new THREE.TextureLoader().load('images/road-sun-rays-path.jpg')
+			} );
+			var cube5 = new THREE.Mesh( geometry5, material5 );
+			scene.add( cube5 );		
+			cube5.position.x = -10;
+			cube5.position.z = -10;
+			cube5.rotation.y = -.785;
+
+			//Cube6
+			var geometry6 = new THREE.BoxGeometry( 0.1, 6, 8 );
+			var material6 = new THREE.MeshLambertMaterial( {
+				map: new THREE.TextureLoader().load('images/willian-justen-de-vasconcellos-570005-unsplash.jpg')
+			} );
+			var cube6 = new THREE.Mesh( geometry6, material6 );
+			scene.add( cube6 );		
+			cube6.position.x = 10;
+			cube6.position.z = 10;
+			cube6.rotation.y = -.785;
+
+			//Cube7
+			var geometry7 = new THREE.BoxGeometry( 0.1, 6, 10.68 );
+			var material7 = new THREE.MeshLambertMaterial( {
+				map: new THREE.TextureLoader().load('images/pexels-photo-977736.jpeg')
+			} );
+			var cube7 = new THREE.Mesh( geometry7, material7 );
+			scene.add( cube7 );		
+			cube7.position.x = -10;
+			cube7.position.z = 10;
+			cube7.rotation.y = .785;
+
+			//Cube8
+			var geometry8 = new THREE.BoxGeometry( 0.1, 6, 9.43 );
+			var material8 = new THREE.MeshLambertMaterial( {
+				map: new THREE.TextureLoader().load('images/pexels-photo-870711.jpeg')
+			} );
+			var cube8 = new THREE.Mesh( geometry8, material8 );
+			scene.add( cube8 );		
+			cube8.position.x = 10;
+			cube8.position.z = -10;
+			cube8.rotation.y = .785;
+
+			//Click and drag orbit controls
+			controls = new THREE.OrbitControls( camera, renderer.domElement );
+			controls.autoRotate = true;
+
+			//Animate a cube
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+				cube0.rotation.x += 0.00;
+				cube0.rotation.y += 0.00;
+
+				renderer.render( scene, camera );
+				
+				controls.update();
+				camera.update();
+			};
+			animate();
+
+			
+		</script>
+	</body>
+</html>
