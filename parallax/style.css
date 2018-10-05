@@ -1,0 +1,29 @@
+body {
+	background-color: rgb(0, 67, 4);
+}
+
+#container {
+	max-width: 960px;
+	margin: 0 auto;
+	background: #f9f9f9;
+	font-size: 24px;
+	padding: 25px;
+	font-family: 'Bai Jamjuree', sans-serif;
+}
+
+#parallax {
+	background: url('forest-park-walk-trail-21423.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+	height: 200px;
+}
+
+.parallax-window {
+    min-height: 450px;
+    background: transparent;
+}
+
+.header {
+	text-align: center;
+	margin-top: 15px;
+}
