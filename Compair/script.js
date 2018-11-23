@@ -12,7 +12,7 @@ let c3temp = document.getElementById('c3temp');
 let c3humid = document.getElementById('c3humid');
 let c3wind = document.getElementById('c3wind');
 
-let api = 'http://api.openweathermap.org/data/2.5/weather?q=';
+let api = 'https://api.openweathermap.org/data/2.5/weather?q=';
 let apiKeyAndUnits = '&APPID=727c2f55c3d9cc48f85080101f3b4ef0&units=imperial';
 
 const calculate = () => {
