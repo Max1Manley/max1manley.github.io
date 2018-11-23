@@ -1,0 +1,45 @@
+body {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+	font-family: 'Saira', sans-serif;
+}
+
+#c1 {
+	margin-left: 5px;
+	border: solid 1px;
+	width: 95%;
+	margin: 10px;
+}
+
+#c2 {
+	margin-left: 5px;
+	border: solid 1px;
+	width: 95%;
+	margin: 10px;
+}
+
+#c3 {
+	margin-left: 5px;
+	border: solid 1px;
+	width: 95%;
+	margin: 10px;
+}
+
+ul {
+	list-style-type: none;
+	text-align: center;
+}
+
+li {
+	display: inline-block;
+	margin: 0px 10px 0px 10px;
+}
+
+input {
+	border: 0px 1px 1px 0px;
+	font-family: 'Saira', sans-serif;
+	font-size: 20px;
+	text-align: center;
+}
