@@ -9,18 +9,28 @@
 
 	<div id="c1">
 		<input onchange='c1weatherAsk()' id="c1input" type="text" placeholder="Enter First City">
+
+		<ul class="smtext">
+			<li>Temp.</li>
+			<li>Humidity</li>
+			<li>Wind</li>
+		</ul>
+
 		<ul>
 			<li id="c1temp"></li>
 			<li id="c1humid"></li>
 			<li id="c1wind"></li>
 		</ul>
+
+		
 	</div>
 
 	<div id="c2">
+		<div class="smtext">Difference Of</div>
 		<ul>
-			<li id="c2temp"></li>
-			<li id="c2humid"></li>
-			<li id="c2wind"></li>
+			<li id="c2temp" class=""></li>
+			<li id="c2humid" class=""></li>
+			<li id="c2wind" class=""></li>
 		</ul>
 	</div>
 
@@ -33,132 +43,8 @@
 		</ul>
 	</div>
 
-	<canvas id="canvas"></canvas>
+	<!-- <canvas id="canvas" height="610px"></canvas> -->
 
 </body>
-
-<script type="text/javascript" src="three.js"></script>
-<script>
-let c1input = document.getElementById('c1input');
-let c1temp = document.getElementById('c1temp');
-let c1humid = document.getElementById('c1humid');
-let c1wind = document.getElementById('c1wind');
-
-let c2temp = document.getElementById('c2temp');
-let c2humid = document.getElementById('c2humid');
-let c2wind = document.getElementById('c2wind');
-
-let c3input = document.getElementById('c3input');
-let c3temp = document.getElementById('c3temp');
-let c3humid = document.getElementById('c3humid');
-let c3wind = document.getElementById('c3wind');
-
-let api = 'https://api.openweathermap.org/data/2.5/weather?q=';
-let apiKeyAndUnits = '&APPID=727c2f55c3d9cc48f85080101f3b4ef0&units=imperial';
-
-const calculate = () => {
-	if (c1input.value != '' && c3input.value != ''){
-		c2temp.innerHTML = Math.abs(parseFloat(c1temp.innerHTML) - parseFloat(c3temp.innerHTML)) + '°';
-		c2humid.innerHTML = Math.abs(parseFloat(c1humid.innerHTML) - parseFloat(c3humid.innerHTML)) + '%';
-		c2wind.innerHTML = Math.abs(parseFloat(c1wind.innerHTML) - parseFloat(c3wind.innerHTML)) + 'mph';
-	}
-}
-
-const c1weatherAsk = () => {
-	let city = c1input.value;
-	const url = api + city + apiKeyAndUnits;
-
-	//Fetching OpenWeather Data
-	fetch(url)
-	.then((res) => res.json())
-	.then(function(data){
-		console.log(data);
-		c1temp.innerHTML = Math.round(data.main.temp) + '°';
-		c1humid.innerHTML = Math.round(data.main.humidity) + '%';
-		c1wind.innerHTML = Math.round(data.wind.speed) + 'mph';
-
-		calculate();
-
-	})
-
-	.catch(function(error){
-		console.log(JSON.stringify(error))
-		alert('City not found.');
-	})
-
-}
-
-const c3weatherAsk = () => {
-	let city = c3input.value;
-	const url = api + city + apiKeyAndUnits;
-
-	//Fetching OpenWeather Data
-	fetch(url)
-	.then((res) => res.json())
-	.then(function(data){
-		console.log(data);
-		c3temp.innerHTML = Math.round(data.main.temp) + '°';
-		c3humid.innerHTML = Math.round(data.main.humidity) + '%';
-		c3wind.innerHTML = Math.round(data.wind.speed) + 'mph';
-
-		calculate();
-
-	})
-
-	.catch(function(error){
-		console.log(JSON.stringify(error))
-		alert('City not found.');
-	})
-
-}
-
-//Convert strings into numbers
-var convert = c1temp.innerHTML;
-var c1temp3d = Number(convert);
-
-
-// Setting scene, camera, and lighting
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-var light = new THREE.AmbientLight(0x404040, 2.75);
-scene.add( light );
-
-camera.position.z = 20;
-
-var light = new THREE.PointLight( 0xff0000, 1, 100 );
-light.position.set( 50, 50, 50 );
-scene.add( light );
-
-//Setting render space
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
-
-//Creating the shapes and images
-
-//cylinderCore
-var geometry = new THREE.CylinderGeometry( 2.5, 2.5, 5, 32 );
-var material = new THREE.MeshLambertMaterial( {color: 0xBDFFBD} );
-var cylinder = new THREE.Mesh( geometry, material );
-scene.add( cylinder );
-
-//Cube0
-var geometry0 = new THREE.BoxGeometry( 1, c1temp3d, 1 );
-var material0 = new THREE.MeshBasicMaterial( 
-{ color: 0x004200} );
-var cube0 = new THREE.Mesh( geometry0, material0 );
-scene.add( cube0 );
-cube0.position.z = 14;
-
-//Animate shapes
-var animate = function () {
-	requestAnimationFrame( animate );
-
-	cube0.rotation.x += 0.00;
-	cube0.rotation.y += 0.02;
-
-	renderer.render( scene, camera );
-};
-animate();
-</script>
+<script type="text/javascript" src="script.js"></script>
 </html>

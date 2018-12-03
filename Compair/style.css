@@ -9,23 +9,49 @@ body {
 
 #c1 {
 	margin-left: 5px;
-	border: solid 1px;
+	border: solid 0px;
 	width: 95%;
 	margin: 10px;
+	background-color: rgba(57, 182, 255, 1);
 }
 
 #c2 {
 	margin-left: 5px;
-	border: solid 1px;
+	border: solid 0px;
 	width: 95%;
 	margin: 10px;
 }
 
 #c3 {
 	margin-left: 5px;
-	border: solid 1px;
+	border: solid 0px;
 	width: 95%;
 	margin: 10px;
+	background-color: rgba(255, 130, 57, 1);
+}
+
+#c2temp {
+
+}
+
+#c2humid {
+
+}
+
+#c2wind {
+
+}
+
+.blue {
+	color: rgba(57, 182, 255, 1);
+}
+
+.orange {
+	color: rgba(255, 130, 57, 1);
+}
+
+.black {
+	color: black;
 }
 
 ul {
@@ -41,6 +67,15 @@ li {
 input {
 	border: 0px 1px 1px 0px;
 	font-family: 'Saira', sans-serif;
-	font-size: 40px;
+	font-size: 50px;
 	text-align: center;
+}
+
+#canvas {
+	width: 95%;
+	background-color: black;
+}
+
+.smtext {
+	font-size: 25px;
 }
