@@ -1,7 +1,8 @@
 body {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 	text-align: center;
 	font-family: 'Saira', sans-serif;
 	font-size: 60px;
@@ -10,24 +11,43 @@ body {
 #c1 {
 	margin-left: 5px;
 	border: solid 0px;
-	width: 95%;
+	width: 1250px;
+	height: 400px;
 	margin: 10px;
 	background-color: rgba(57, 182, 255, 1);
+	border-radius: 30px;
 }
 
 #c2 {
-	margin-left: 5px;
 	border: solid 0px;
-	width: 95%;
+	width: 1250px;
+	height: 275px;
 	margin: 10px;
 }
 
 #c3 {
 	margin-left: 5px;
 	border: solid 0px;
-	width: 95%;
+	width: 1250px;
+	height: 400px;
 	margin: 10px;
 	background-color: rgba(255, 130, 57, 1);
+	border-radius: 30px;
+}
+
+input {
+	border: 0px 1px 1px 0px;
+	margin-bottom: 30px;
+	font-family: 'Saira', sans-serif;
+	font-size: 50px;
+	text-align: center;
+	border-radius: 15px;
+}
+
+.flexwrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
 
 #c2temp {
@@ -42,18 +62,6 @@ body {
 
 }
 
-.blue {
-	color: rgba(57, 182, 255, 1);
-}
-
-.orange {
-	color: rgba(255, 130, 57, 1);
-}
-
-.black {
-	color: black;
-}
-
 ul {
 	list-style-type: none;
 	text-align: center;
@@ -64,12 +72,18 @@ li {
 	margin: 0px 10px 0px 10px;
 }
 
-input {
-	border: 0px 1px 1px 0px;
-	font-family: 'Saira', sans-serif;
-	font-size: 50px;
-	text-align: center;
+.blue {
+	color: rgba(57, 182, 255, 1);
 }
+
+.orange {
+	color: rgba(255, 130, 57, 1);
+}
+
+.black {
+	color: rgba(0, 0, 0, 1);
+}
+
 
 #canvas {
 	width: 95%;
@@ -77,5 +91,9 @@ input {
 }
 
 .smtext {
-	font-size: 25px;
+	font-size: 35px;
+}
+
+.bgtext {
+	font-size: 60px;
 }

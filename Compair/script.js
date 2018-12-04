@@ -17,8 +17,6 @@ let canvas = document.getElementById('canvas');
 let api = 'https://api.openweathermap.org/data/2.5/weather?q=';
 let apiKeyAndUnits = '&APPID=727c2f55c3d9cc48f85080101f3b4ef0&units=imperial';
 
-
-
 const c1weatherAsk = () => {
 
 	//Setting up API URL
@@ -53,7 +51,7 @@ const c3weatherAsk = () => {
 	let city = c3input.value;
 	const url = api + city + apiKeyAndUnits;
 
-	//Fetching an Displaying OpenWeather Data
+	//Fetching and Displaying OpenWeather Data
 	fetch(url)
 	.then((res) => res.json())
 	.then(function(data){

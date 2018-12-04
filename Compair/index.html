@@ -10,7 +10,7 @@
 	<div id="c1">
 		<input onchange='c1weatherAsk()' id="c1input" type="text" placeholder="Enter First City">
 
-		<ul class="smtext">
+<!-- 		<ul class="smtext">
 			<li>Temp.</li>
 			<li>Humidity</li>
 			<li>Wind</li>
@@ -20,27 +20,44 @@
 			<li id="c1temp"></li>
 			<li id="c1humid"></li>
 			<li id="c1wind"></li>
-		</ul>
+		</ul> -->
 
-		
+		<div class="flexwrap">
+			<div class="smtext"> Temp 
+				<p id="c1temp" class="bgtext"> </p>
+			</div>
+			<div class="smtext"> Humidity 
+				<p id="c1humid" class="bgtext"> </p>
+			</div>
+			<div class="smtext"> Wind 
+				<p id="c1wind" class="bgtext"> </p>
+			</div>
+		</div>
+
 	</div>
 
 	<div id="c2">
 		<div class="smtext">Difference Of</div>
-		<ul>
-			<li id="c2temp" class=""></li>
-			<li id="c2humid" class=""></li>
-			<li id="c2wind" class=""></li>
-		</ul>
+		<div class="flexwrap">
+			<div><p id="c2temp"> </p></div>
+			<div><p id="c2humid"> </p></div>
+			<div><p id="c2wind"> </p></div>
+		</div>
 	</div>
 
 	<div id="c3">
 		<input onchange='c3weatherAsk()' id="c3input" type="text" placeholder="Enter Second City">
-		<ul>
-			<li id="c3temp"></li>
-			<li id="c3humid"></li>
-			<li id="c3wind"></li>
-		</ul>
+		<div class="flexwrap">
+			<div class="smtext"> Temp 
+				<p id="c3temp" class="bgtext"> </p>
+			</div>
+			<div class="smtext"> Humidity 
+				<p id="c3humid" class="bgtext"> </p>
+			</div>
+			<div class="smtext"> Wind 
+				<p id="c3wind" class="bgtext"> </p>
+			</div>
+		</div>
 	</div>
 
 	<!-- <canvas id="canvas" height="610px"></canvas> -->
