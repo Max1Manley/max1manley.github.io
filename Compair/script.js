@@ -34,6 +34,7 @@ const c1weatherAsk = () => {
 
 		calculate();
 		classToggle();
+		updateGraph();
 
 	})
 
@@ -127,8 +128,15 @@ const calculate = () => {
 
 
 //Making graph
-// let av = -100;
-// var c = canvas.getContext('2d');
 
-// c.fillStyle = 'rgb(0, 255, 255)';
-// c.fillRect(50, 610, 75, av);
+
+const updateGraph = () => {
+
+	av = (Math.abs(parseFloat(c1temp.innerHTML))) * 2.5;
+	let c = canvas.getContext('2d');
+
+	c.fillStyle = 'rgb(57, 182, 255)';
+	c.fillRect(0, 0, 0, 0);
+	c.fillRect(5, 0, 50, av);
+}
+
