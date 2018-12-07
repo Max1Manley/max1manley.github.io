@@ -8,11 +8,15 @@ body {
 	font-size: 60px;
 }
 
+.header {
+	font-size: 85px;
+}
+
 #c1 {
 	margin-left: 5px;
 	border: solid 0px;
 	width: 80%;
-	height: 400px;
+	height: 390px;
 	margin: 10px;
 	background-color: rgba(57, 182, 255, 1);
 	border-radius: 30px;
@@ -21,7 +25,7 @@ body {
 #c2 {
 	border: solid 0px;
 	width: 80%;
-	height: 275px;
+	height: 240px;
 	margin: 10px;
 }
 
@@ -29,7 +33,7 @@ body {
 	margin-left: 5px;
 	border: solid 0px;
 	width: 80%;
-	height: 400px;
+	height: 390px;
 	margin: 10px;
 	background-color: rgba(255, 130, 57, 1);
 	border-radius: 30px;
@@ -49,18 +53,6 @@ input {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
-}
-
-#c2temp {
-
-}
-
-#c2humid {
-
-}
-
-#c2wind {
-
 }
 
 ul {

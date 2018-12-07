@@ -193,4 +193,3 @@ const calculate = () => {
 // 	c.fillRect(5, 0, 25, av);
 // 	console.log(av);
 // }
-
