@@ -12,6 +12,9 @@ let c3temp = document.getElementById('c3temp');
 let c3humid = document.getElementById('c3humid');
 let c3wind = document.getElementById('c3wind');
 
+
+let c1icon = document.getElementById('c1icon');
+let c3icon = document.getElementById('c3icon');
 let canvas = document.getElementById('canvas');
 
 let api = 'https://api.openweathermap.org/data/2.5/weather?q=';
@@ -27,14 +30,40 @@ const c1weatherAsk = () => {
 	fetch(url)
 	.then((res) => res.json())
 	.then(function(data){
+
+		//Creates icon left of temp
+		c1icon.innerHTML = `<img height=150px width=150px src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
+		
 		console.log(data);
 		c1temp.innerHTML = Math.round(data.main.temp) + '°';
 		c1humid.innerHTML = Math.round(data.main.humidity) + '%';
-		c1wind.innerHTML = Math.round(data.wind.speed) + 'mph';
+
+		let windDirection = '';
+		let dwd = parseFloat(data.wind.deg);
+
+		if (dwd > 337.5 || dwd < 22.5){
+			windDirection = 'N';
+		} else if (dwd > 22.5 && dwd < 67.5){
+			windDirection = 'NE';
+		} else if (dwd > 67.5 && dwd < 112.5){
+			windDirection = 'E';
+		} else if (dwd > 112.5 && dwd < 157.5){
+			windDirection = 'SE';
+		} else if (dwd > 157.5 && dwd < 202.5){
+			windDirection = 'S';
+		} else if (dwd > 202.5 && dwd < 247.5){
+			windDirection = 'SW';
+		} else if (dwd > 247.5 && dwd < 292.5){
+			windDirection = 'W';
+		} else if (dwd > 292.5 && dwd < 337.5){
+			windDirection = 'NW';
+		}
+
+		c1wind.innerHTML = Math.round(data.wind.speed) + 'mph' + ' ' + windDirection;
 
 		calculate();
 		classToggle();
-		updateGraph();
+		// c1updateGraph();
 
 	})
 
@@ -57,9 +86,33 @@ const c3weatherAsk = () => {
 	.then((res) => res.json())
 	.then(function(data){
 		console.log(data);
+
+		c3icon.innerHTML = `<img height=150px width=150px src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
 		c3temp.innerHTML = Math.round(data.main.temp) + '°';
 		c3humid.innerHTML = Math.round(data.main.humidity) + '%';
-		c3wind.innerHTML = Math.round(data.wind.speed) + 'mph';
+
+		let windDirection = '';
+		let dwd = parseFloat(data.wind.deg);
+
+		if (dwd > 337.5 || dwd < 22.5){
+			windDirection = 'N';
+		} else if (dwd > 22.5 && dwd < 67.5){
+			windDirection = 'NE';
+		} else if (dwd > 67.5 && dwd < 112.5){
+			windDirection = 'E';
+		} else if (dwd > 112.5 && dwd < 157.5){
+			windDirection = 'SE';
+		} else if (dwd > 157.5 && dwd < 202.5){
+			windDirection = 'S';
+		} else if (dwd > 202.5 && dwd < 247.5){
+			windDirection = 'SW';
+		} else if (dwd > 247.5 && dwd < 292.5){
+			windDirection = 'W';
+		} else if (dwd > 292.5 && dwd < 337.5){
+			windDirection = 'NW';
+		}
+
+		c3wind.innerHTML = Math.round(data.wind.speed) + 'mph' + ' ' + windDirection;
 
 		calculate();
 		classToggle();
@@ -125,18 +178,19 @@ const calculate = () => {
 	}
 }
 
+// const c1updateGraph = () => {
 
+// 	//Setting variables
+// 	av = (Math.abs(parseFloat(c1temp.innerHTML))) * 2.5;
+// 	let c = canvas.getContext('2d');
 
-//Making graph
+// 	//Clearing canvas so smaller bars will show
+// 	c.clearRect(0, 0, canvas.width, canvas.height);
 
-
-const updateGraph = () => {
-
-	av = (Math.abs(parseFloat(c1temp.innerHTML))) * 2.5;
-	let c = canvas.getContext('2d');
-
-	c.fillStyle = 'rgb(57, 182, 255)';
-	c.fillRect(0, 0, 0, 0);
-	c.fillRect(5, 0, 50, av);
-}
+// 	//Creating the graph bars
+// 	c.fillStyle = 'rgb(57, 182, 255)';
+// 	c.fillRect(0, 0, 0, 0);
+// 	c.fillRect(5, 0, 25, av);
+// 	console.log(av);
+// }
 
