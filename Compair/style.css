@@ -36,6 +36,37 @@ body {
 	}
 }
 
+#optionList {
+	font-family: 'Saira', sans-serif;
+	position: absolute;
+    top: 60px;
+    right: 13%;
+    border-radius: 15px;
+    font-size: 25px;
+}
+
+@media (max-width: 800px) {
+	#optionList {
+		font-family: 'Saira', sans-serif;
+		position: absolute;
+	    top: 30px;
+	    right: 15%;
+	    border-radius: 15px;
+	    font-size: 15px;
+	}
+}
+
+@media (min-width: 1200px) {
+	#optionList {
+		font-family: 'Saira', sans-serif;
+		position: absolute;
+	    top: 30px;
+	    right: 15%;
+	    border-radius: 15px;
+	    font-size: 15px;
+	}
+}
+
 #c1 {
 	margin-left: 5px;
 	border: solid 0px;

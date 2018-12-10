@@ -7,7 +7,18 @@
 </head>
 <body>
 
-	<div class="header"><strong><font class="blue">Comp</font><font class="orange">air</font></strong></div>
+	<div class="header">
+		<strong><font class="blue">Comp</font><font class="orange">air</font></strong>
+	</div>
+
+	<div id="menu">
+		<form name="myForm">
+			<select name="optionList" id="optionList" onchange="handleOption(this.form)">
+				<option value="City">City Name</option>
+				<option value="Zip">Zip Code</option>
+			</select>
+		</form>
+	</div>
 
 	<div id="c1">
 		<input onchange='c1weatherAsk()' id="c1input" type="text" placeholder="Enter 1st City">

@@ -20,6 +20,14 @@ let canvas = document.getElementById('canvas');
 let api = 'https://api.openweathermap.org/data/2.5/weather?q=';
 let apiKeyAndUnits = '&APPID=727c2f55c3d9cc48f85080101f3b4ef0&units=imperial';
 
+const handleOption = (myForm) =>{
+	if (myForm.optionList.selectedIndex === 0){
+		api = 'https://api.openweathermap.org/data/2.5/weather?q=';
+	} else if (myForm.optionList.selectedIndex === 1){
+		api = 'https://api.openweathermap.org/data/2.5/weather?zip=';
+	}
+}
+
 const c1weatherAsk = () => {
 
 	//Setting up API URL
@@ -63,7 +71,6 @@ const c1weatherAsk = () => {
 
 		calculate();
 		classToggle();
-		// c1updateGraph();
 
 	})
 
