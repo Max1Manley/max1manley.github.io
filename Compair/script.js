@@ -94,7 +94,7 @@ const c3weatherAsk = () => {
 	.then(function(data){
 		console.log(data);
 
-		c3icon.innerHTML = `<img height=150px width=150px src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
+		c3icon.innerHTML = `<img height=150px width=150px src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
 		c3temp.innerHTML = Math.round(data.main.temp) + '°';
 		c3humid.innerHTML = Math.round(data.main.humidity) + '%';
 
