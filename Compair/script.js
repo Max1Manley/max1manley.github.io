@@ -40,7 +40,7 @@ const c1weatherAsk = () => {
 	.then(function(data){
 
 		//Creates icon left of temp
-		c1icon.innerHTML = `<img height=150px width=150px src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
+		c1icon.innerHTML = `<img height=150px width=150px src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
 		
 		console.log(data);
 		c1temp.innerHTML = Math.round(data.main.temp) + '°';
