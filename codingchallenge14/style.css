@@ -1,0 +1,112 @@
+
+#playmat {
+	margin-left: 10%;
+	margin-right: 10%;
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: repeat(4, 1fr); 
+}
+
+.scene {
+	width: 100%;
+	height: 150px;
+	perspective: 600px;
+}
+
+.card {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transition: transform 1s;
+	transform-style: preserve-3d;
+}
+
+.card__face {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	backface-visibility: hidden;
+}
+
+.card__face--front {
+	background: red;
+}
+
+.card__face--back {
+	transform: rotateY(180deg);
+}
+
+.card.is-flipped {
+	transform: rotateY(180deg);
+}
+
+.card.stay-flipped {
+	transform: rotateY(180deg);
+}
+
+.image1 {
+	background-image: url("https://image.flaticon.com/icons/svg/921/921490.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+
+.image2 {
+	background-image: url("https://image.flaticon.com/icons/png/512/1430/1430235.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.image3 {
+	background-image: url("https://image.flaticon.com/icons/png/512/1430/1430223.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.image4 {
+	background-image: url("https://image.flaticon.com/icons/png/512/1430/1430219.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.image5 {
+	background-image: url("https://image.flaticon.com/icons/png/512/1430/1430213.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.image6 {
+	background-image: url("https://image.flaticon.com/icons/png/512/1430/1430222.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.image100 {
+
+}
+
+.image200 {
+
+}
+
+.image300 {
+
+}
+
+.image400 {
+
+}
+
+.image500 {
+
+}
+
+.image600 {
+
+}
