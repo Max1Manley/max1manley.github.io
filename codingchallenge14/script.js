@@ -1,3 +1,4 @@
+//state object keeps track of game statuses
 let state = {
 	image1: 0,
 	image2: 0,
@@ -69,20 +70,22 @@ const flip = (card) => {
 	}
 };
 
+//removes the temporary is-flipped class but leaves the stay-flipped class
 const flippedRemover = () => {
-		
 	for (let j = 1; j < 13; j++){
 		document.getElementById(`${j}00`).classList.remove('is-flipped');
 		state.stopClicks = false;
 	}
 };
 
+//checks if the two card share the same image and that it isn't just the same card clicked twice
+//first if statement adds stay-flipped and removes is-flipped as well as adding 1 to state.matches
+//second if statment resets the classes and clicks saved in state and delays the flippedRemover()
 const matchHandler = () => {
 	if ( state.c1Classes === state.c2Classes && state.c1Id !== state.c2Id ) {
 		state.matches++;
 		document.getElementById(state.c1Id).classList.add('stay-flipped');
 		document.getElementById(state.c2Id).classList.add('stay-flipped');
-		
 		for (let f = 1; f < 13; f++){
 			document.getElementById(`${f}00`).classList.remove('is-flipped');			
 		}
