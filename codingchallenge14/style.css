@@ -28,10 +28,8 @@ body {
 }
 
 .card {
-	/*width: 90%;
-	height: 100%;*/
-	width: 15vw;
-	height: 25vh;
+	width: 90%;
+	height: 100%;
 	position: relative;
 	transition: transform 1s;
 	transform-style: preserve-3d;
@@ -68,11 +66,13 @@ body {
 }
 
 img{
-	height: 2rem;
-	width: 2rem;
+	height: 1.5rem;
+	width: 1.5rem;
 }
 
 img:hover {
+	transform: rotate(-1turn);
+	transition-duration: .85s;
 	cursor: pointer;
 }
 
