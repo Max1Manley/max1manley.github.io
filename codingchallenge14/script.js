@@ -1,4 +1,4 @@
-//state object keeps track of game status
+//state object keeps track of game state
 let state = {
 	image1: 0,
 	image2: 0,
@@ -52,7 +52,7 @@ const imgAssign = () => {
 } 
 imgAssign();
 
-//creating count up timer
+//stack overflow counter
 var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 var totalSeconds = 0;
@@ -80,8 +80,6 @@ const flip = (card) => {
 		state.stopClicks === false){
 		card.classList.add('is-flipped');
 		state.clicks++;
-		console.log(state.clicks);
-		console.log(state.stopClicks);
 	}
 	if ( state.clicks === 1 ){
 		state.c1Classes = card.classList.value;
@@ -136,7 +134,6 @@ const matchHandler = () => {
 
 //resets state, classes, timer, and re-shuffles cards
 const reset = () => {
-	console.log('yeah man reset it');
 	state = {
 		image1: 0,
 		image2: 0,
