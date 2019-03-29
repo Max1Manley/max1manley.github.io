@@ -52,7 +52,7 @@ const imgAssign = () => {
 } 
 imgAssign();
 
-//stack overflow counter
+//Timer found on stackoverflow
 var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 var totalSeconds = 0;
@@ -92,21 +92,6 @@ const flip = (card) => {
 		state.moves++;
 	}
 	document.getElementById('moves').innerHTML = 'Move ' + state.moves;
-};
-
-//removes the temporary is-flipped class but leaves the stay-flipped class
-const flippedRemover = () => {
-	for (let j = 1; j < 13; j++){
-		document.getElementById(`${j}00`).classList.remove('is-flipped');
-		state.stopClicks = false;
-	}
-};
-
-//checks if required amout of matches is met and alerts with a congratulatory message
-const winAlert = () => {
-	if(state.matches === 6){
-		alert(`Your Time Is ${minutesLabel.innerHTML}:${secondsLabel.innerHTML}!` );
-	}
 }
 
 //checks if the two card share the same image and that it isn't just the same card clicked twice
@@ -129,6 +114,21 @@ const matchHandler = () => {
 		state.c2Classes = null;
 		setTimeout(flippedRemover, 1500);
 		state.clicks = 0;
+	}
+}
+
+//checks if required amout of matches is met and alerts with a congratulatory message
+const winAlert = () => {
+	if(state.matches === 6){
+		alert(`You finished in ${minutesLabel.innerHTML} minute(s) ${secondsLabel.innerHTML} seconds with ${state.moves} moves!` );
+	}
+}
+
+//removes the temporary is-flipped class but leaves the stay-flipped class
+const flippedRemover = () => {
+	for (let j = 1; j < 13; j++){
+		document.getElementById(`${j}00`).classList.remove('is-flipped');
+		state.stopClicks = false;
 	}
 }
 
