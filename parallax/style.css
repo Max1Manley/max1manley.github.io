@@ -6,16 +6,10 @@ body {
 	max-width: 960px;
 	margin: 0 auto;
 	background: #f9f9f9;
-	font-size: 24px;
+	font-size: 1.5rem;
 	padding: 25px;
 	font-family: 'Bai Jamjuree', sans-serif;
-}
-
-#parallax {
-	background: url('forest-park-walk-trail-21423.jpg');
-	background-size: cover;
-	background-attachment: fixed;
-	height: 200px;
+	text-align: center;
 }
 
 .parallax-window {
@@ -25,5 +19,16 @@ body {
 
 .header {
 	text-align: center;
-	margin-top: 15px;
+	/*margin-top: 25px;*/
+}
+
+.space {
+	margin: 25px 10px 25px 10px;
+/*	display: grid;
+	place-items: center;*/
+	
+}
+
+.space .section {
+	
 }
