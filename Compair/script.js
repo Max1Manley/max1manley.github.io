@@ -14,10 +14,8 @@ let c3temp = document.getElementById('c3temp');
 let c3humid = document.getElementById('c3humid');
 let c3wind = document.getElementById('c3wind');
 
-
 let c1icon = document.getElementById('c1icon');
 let c3icon = document.getElementById('c3icon');
-let canvas = document.getElementById('canvas');
 
 let api = 'https://api.openweathermap.org/data/2.5/weather?q=';
 let apiKeyAndUnits = '&APPID=727c2f55c3d9cc48f85080101f3b4ef0&units=imperial';
@@ -31,11 +29,31 @@ const handleOption = (myForm) =>{
 }
 
 
-//no repeat on this function?
-const c1weatherAsk = () => {
+const weatherAsk = (n) => {
+	
+	let input;
+	let icon;
+	let temperature;
+	let humid;
+	let Cwind;
+
+	if (n === 1){
+		input = c1input;
+		Cicon = c1icon;
+		temperature = c1temp;
+		humid = c1humid;
+		Cwind = c1wind;
+	}
+	if (n === 3){
+		input = c3input;
+		Cicon = c3icon;
+		temperature = c3temp;
+		humid = c3humid;
+		Cwind = c3wind;
+	}
 
 	//Setting up API URL
-	let city = c1input.value;
+	let city = input.value;
 	const url = api + city + apiKeyAndUnits;
 
 	//Fetching and Displaying OpenWeather Data
@@ -44,11 +62,11 @@ const c1weatherAsk = () => {
 	.then(function(data){
 
 		//Creates icon left of temp
-		c1icon.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
+		Cicon.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
 		
 		console.log(data);
-		c1temp.innerHTML = Math.round(data.main.temp) + "°";
-		c1humid.innerHTML = Math.round(data.main.humidity) + '%';
+		temperature.innerHTML = Math.round(data.main.temp) + "°";
+		humid.innerHTML = Math.round(data.main.humidity) + '%';
 
 		let windDirection = '';
 		let dwd = parseFloat(data.wind.deg);
@@ -71,7 +89,7 @@ const c1weatherAsk = () => {
 			windDirection = 'NW';
 		}
 
-		c1wind.innerHTML = Math.round(data.wind.speed) + 'mph' + ' ' + windDirection;
+		Cwind.innerHTML = Math.round(data.wind.speed) + 'mph' + ' ' + windDirection;
 
 		calculate();
 		classToggle();
@@ -86,58 +104,115 @@ const c1weatherAsk = () => {
 
 }
 
+
+
+//no repeat on this function?
+// const c1weatherAsk = () => {
+
+// 	//Setting up API URL
+// 	let city = c1input.value;
+// 	const url = api + city + apiKeyAndUnits;
+
+// 	//Fetching and Displaying OpenWeather Data
+// 	fetch(url)
+// 	.then((res) => res.json())
+// 	.then(function(data){
+
+// 		//Creates icon left of temp
+// 		c1icon.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
+		
+// 		console.log(data);
+// 		c1temp.innerHTML = Math.round(data.main.temp) + "°";
+// 		c1humid.innerHTML = Math.round(data.main.humidity) + '%';
+
+// 		let windDirection = '';
+// 		let dwd = parseFloat(data.wind.deg);
+
+// 		if (dwd > 337.5 || dwd < 22.5){
+// 			windDirection = 'N';
+// 		} else if (dwd > 22.5 && dwd < 67.5){
+// 			windDirection = 'NE';
+// 		} else if (dwd > 67.5 && dwd < 112.5){
+// 			windDirection = 'E';
+// 		} else if (dwd > 112.5 && dwd < 157.5){
+// 			windDirection = 'SE';
+// 		} else if (dwd > 157.5 && dwd < 202.5){
+// 			windDirection = 'S';
+// 		} else if (dwd > 202.5 && dwd < 247.5){
+// 			windDirection = 'SW';
+// 		} else if (dwd > 247.5 && dwd < 292.5){
+// 			windDirection = 'W';
+// 		} else if (dwd > 292.5 && dwd < 337.5){
+// 			windDirection = 'NW';
+// 		}
+
+// 		c1wind.innerHTML = Math.round(data.wind.speed) + 'mph' + ' ' + windDirection;
+
+// 		calculate();
+// 		classToggle();
+
+// 	})
+
+// 	//Alert Error
+// 	.catch(function(error){
+// 		console.log(JSON.stringify(error))
+// 		alert('City not found. Enter only either city name, or Zip.');
+// 	})
+
+// }
+
 //no reapeat on this function?
-const c3weatherAsk = () => {
+// const c3weatherAsk = () => {
 
-	//Setting up API URL
-	let city = c3input.value;
-	const url = api + city + apiKeyAndUnits;
+// 	//Setting up API URL
+// 	let city = c3input.value;
+// 	const url = api + city + apiKeyAndUnits;
 
-	//Fetching and Displaying OpenWeather Data
-	fetch(url)
-	.then((res) => res.json())
-	.then(function(data){
-		console.log(data);
+// 	//Fetching and Displaying OpenWeather Data
+// 	fetch(url)
+// 	.then((res) => res.json())
+// 	.then(function(data){
+// 		console.log(data);
 
-		c3icon.innerHTML = `<img height=150px width=150px src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
-		c3temp.innerHTML = Math.round(data.main.temp) + '°';
-		c3humid.innerHTML = Math.round(data.main.humidity) + '%';
+// 		c3icon.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
+// 		c3temp.innerHTML = Math.round(data.main.temp) + '°';
+// 		c3humid.innerHTML = Math.round(data.main.humidity) + '%';
 
-		let windDirection = '';
-		let dwd = parseFloat(data.wind.deg);
+// 		let windDirection = '';
+// 		let dwd = parseFloat(data.wind.deg);
 
-		if (dwd > 337.5 || dwd < 22.5){
-			windDirection = 'N';
-		} else if (dwd > 22.5 && dwd < 67.5){
-			windDirection = 'NE';
-		} else if (dwd > 67.5 && dwd < 112.5){
-			windDirection = 'E';
-		} else if (dwd > 112.5 && dwd < 157.5){
-			windDirection = 'SE';
-		} else if (dwd > 157.5 && dwd < 202.5){
-			windDirection = 'S';
-		} else if (dwd > 202.5 && dwd < 247.5){
-			windDirection = 'SW';
-		} else if (dwd > 247.5 && dwd < 292.5){
-			windDirection = 'W';
-		} else if (dwd > 292.5 && dwd < 337.5){
-			windDirection = 'NW';
-		}
+// 		if (dwd > 337.5 || dwd < 22.5){
+// 			windDirection = 'N';
+// 		} else if (dwd > 22.5 && dwd < 67.5){
+// 			windDirection = 'NE';
+// 		} else if (dwd > 67.5 && dwd < 112.5){
+// 			windDirection = 'E';
+// 		} else if (dwd > 112.5 && dwd < 157.5){
+// 			windDirection = 'SE';
+// 		} else if (dwd > 157.5 && dwd < 202.5){
+// 			windDirection = 'S';
+// 		} else if (dwd > 202.5 && dwd < 247.5){
+// 			windDirection = 'SW';
+// 		} else if (dwd > 247.5 && dwd < 292.5){
+// 			windDirection = 'W';
+// 		} else if (dwd > 292.5 && dwd < 337.5){
+// 			windDirection = 'NW';
+// 		}
 
-		c3wind.innerHTML = Math.round(data.wind.speed) + 'mph' + ' ' + windDirection;
+// 		c3wind.innerHTML = Math.round(data.wind.speed) + 'mph' + ' ' + windDirection;
 
-		calculate();
-		classToggle();
+// 		calculate();
+// 		classToggle();
 
-	})
+// 	})
 
-	//Alert Error
-	.catch(function(error){
-		console.log(JSON.stringify(error))
-		alert('City not found.');
-	})
+// 	//Alert Error
+// 	.catch(function(error){
+// 		console.log(JSON.stringify(error))
+// 		alert('City not found. Enter only either city name, or Zip.');
+// 	})
 
-}
+// }
 
 const classToggle = () => {
 
