@@ -1,3 +1,5 @@
+//Max Manley - 2018-19
+
 let c1input = document.getElementById('c1input');
 let c1temp = document.getElementById('c1temp');
 let c1humid = document.getElementById('c1humid');
@@ -28,6 +30,8 @@ const handleOption = (myForm) =>{
 	}
 }
 
+
+//no repeat on this function?
 const c1weatherAsk = () => {
 
 	//Setting up API URL
@@ -40,10 +44,10 @@ const c1weatherAsk = () => {
 	.then(function(data){
 
 		//Creates icon left of temp
-		c1icon.innerHTML = `<img height=150px width=150px src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
+		c1icon.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
 		
 		console.log(data);
-		c1temp.innerHTML = Math.round(data.main.temp) + '°';
+		c1temp.innerHTML = Math.round(data.main.temp) + "°";
 		c1humid.innerHTML = Math.round(data.main.humidity) + '%';
 
 		let windDirection = '';
@@ -77,11 +81,12 @@ const c1weatherAsk = () => {
 	//Alert Error
 	.catch(function(error){
 		console.log(JSON.stringify(error))
-		alert('City not found.');
+		alert('City not found. Enter only either city name, or Zip.');
 	})
 
 }
 
+//no reapeat on this function?
 const c3weatherAsk = () => {
 
 	//Setting up API URL
@@ -152,7 +157,7 @@ const classToggle = () => {
 		}
 	}
 
-	//Comparing humidity
+	//Comparing humidity and changing class
 	if (c1input.value != '' && c3input.value != ''){
 		if (Math.abs(parseFloat(c1humid.innerHTML)) > Math.abs(parseFloat(c3humid.innerHTML))) {
 			c2humid.classList.toggle("blue");
@@ -163,7 +168,7 @@ const classToggle = () => {
 		}
 	}
 
-	//Comparing wind
+	//Comparing wind and changing class
 	if (c1input.value != '' && c3input.value != ''){
 		if (Math.abs(parseFloat(c1wind.innerHTML)) > Math.abs(parseFloat(c3wind.innerHTML))) {
 			c2wind.classList.toggle("blue");
@@ -184,19 +189,3 @@ const calculate = () => {
 		c2wind.innerHTML = Math.abs(parseFloat(c1wind.innerHTML) - parseFloat(c3wind.innerHTML)) + 'mph';
 	}
 }
-
-// const c1updateGraph = () => {
-
-// 	//Setting variables
-// 	av = (Math.abs(parseFloat(c1temp.innerHTML))) * 2.5;
-// 	let c = canvas.getContext('2d');
-
-// 	//Clearing canvas so smaller bars will show
-// 	c.clearRect(0, 0, canvas.width, canvas.height);
-
-// 	//Creating the graph bars
-// 	c.fillStyle = 'rgb(57, 182, 255)';
-// 	c.fillRect(0, 0, 0, 0);
-// 	c.fillRect(5, 0, 25, av);
-// 	console.log(av);
-// }

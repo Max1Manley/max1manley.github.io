@@ -8,7 +8,7 @@
 <body>
 
 	<div class="header">
-		<strong><font class="blue">Comp</font><font class="orange">air</font></strong>
+		<strong><font class="Comp">Comp</font><font class="air">air</font></strong>
 	</div>
 
 	<div id="menu">
@@ -25,34 +25,32 @@
 		
 
 		<!-- Fix layouts so that everything is laid out evenly -->
-		<div class="flexwrap">
-			<div class="smtext">
-				<p id="c1icon"></p>
-			</div>
-			
+		<div class="flexwrap">			
 
 			<div class="smtext"> Temp 
-				<p id="c1temp" class="bgtext"> </p>
+				<div id="c1temp" class="bgtext"> </div>
 			</div>
 			<div class="smtext"> Humidity 
-				<p id="c1humid" class="bgtext"> </p>
+				<div id="c1humid" class="bgtext"> </div>
 			</div>
 			<div class="smtext"> Wind 
-				<p id="c1wind" class="bgtext"> </p>
+				<div id="c1wind" class="bgtext"> </div>
 			</div>
+			<div class="smtext">
+				<div id="c1icon" class="iconRoom"></div>
+			</div>
+
 		</div>
 
 	</div>
 
 	<div id="c2">
-		<div class="smtext">Difference Of</div>
-		<div class="flexwrap">
-
-			<div></div>
-
-			<div><p id="c2temp"> </p></div>
-			<div><p id="c2humid"> </p></div>
-			<div><p id="c2wind"> </p></div>
+		<!-- <div class="smtext">Difference Of</div> -->
+		<div class="c2flexwrap">
+			<div id="c2temp" class="bgtext"> </div>
+			<div id="c2humid" class="bgtext"> </div>
+			<div id="c2wind" class="bgtext"> </div>
+			<div class="iconRoom"> <img src="arrows.png"> </div>			
 		</div>
 	</div>
 
@@ -60,18 +58,18 @@
 		<input onchange='c3weatherAsk()' id="c3input" type="text" placeholder="Enter 2nd City">
 		<div class="flexwrap">
 
-			<div class="smtext">
-				<p id="c3icon"></p>
-			</div>
-
 			<div class="smtext"> Temp 
-				<p id="c3temp" class="bgtext"> </p>
+				<div id="c3temp" class="bgtext"> </div>
 			</div>
 			<div class="smtext"> Humidity 
-				<p id="c3humid" class="bgtext"> </p>
+				<div id="c3humid" class="bgtext"> </div>
 			</div>
 			<div class="smtext"> Wind 
-				<p id="c3wind" class="bgtext"> </p>
+				<div id="c3wind" class="bgtext"> </div>
+			</div>
+			<!-- <div class="smtext"> -->
+				<div id="c3icon" class="iconRoom"></div>
+			</div>
 			</div>
 		</div>
 	</div>
