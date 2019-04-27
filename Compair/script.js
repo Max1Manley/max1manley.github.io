@@ -30,6 +30,7 @@ const handleOption = (myForm) =>{
 
 const weatherAsk = (n) => {
 	
+	//if n === 1, changes container 1. if n === 3, changes container 3.
 	let input;
 	let Cicon;
 	let temperature;
@@ -60,7 +61,7 @@ const weatherAsk = (n) => {
 	.then((res) => res.json())
 	.then(function(data){
 
-		//Creates icon left of temp
+		//Creates icon right of temp
 		Cicon.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
 		
 		console.log(data);
