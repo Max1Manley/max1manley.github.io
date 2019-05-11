@@ -1,0 +1,12 @@
+html {
+	background-color: white;
+	color: black;
+	text-align: center;
+	font-size: 10px;
+}
+
+.flex{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
