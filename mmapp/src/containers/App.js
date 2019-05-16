@@ -4,6 +4,7 @@ import publicDomain from './publicDomain';
 import SearchBar from '../components/SearchBar';
 import SearchResult from '../components/SearchResult';
 import SquareCard from '../components/SquareCard';
+import Next from '../components/Next';
 import './App.css';
 
 class App extends Component {
@@ -14,13 +15,10 @@ class App extends Component {
 			random0: {},
 			random1: {},
 			random2: {},
+			nN: 0,
 			searched: null,
-			searchfield: "",
-			searchReply: 0,
 			route: "",
-			test0: null,
-			test1: null,
-			test2: null,
+			test: null,
 		}
 	}
 
@@ -52,6 +50,7 @@ class App extends Component {
 		});	
 	}
 
+
 	onSearchChange = (event) => {
 		console.log('events is happening');
 		if (event.key === 'Enter'){
@@ -59,53 +58,36 @@ class App extends Component {
 			.then (response => response.json())
 			.then (art => {
 				this.setState({
-					searched: art,
-					
+					searched: art,	
 				})
-				fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[0]}`)
-				.then(response => response.json())
-				.then(art => {
-					this.setState({
-						test0: art,
-						searchReply: this.state.searchReply + 1,
-					})
-				})
-				fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[1]}`)
-				.then(response => response.json())
-				.then(art => {
-					this.setState({
-						test1: art,
-						searchReply: this.state.searchReply + 1,
-					})
-				})
-				fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[2]}`)
-				.then(response => response.json())
-				.then(art => {
-					this.setState({
-						test2: art,
-						searchReply: this.state.searchReply + 1,
-					})
-				})
-			});					
+				this.singleFetch();
+			})					
 		}
 	}
 
+	singleFetch = () =>{
+		fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[this.state.nN]}`)
+		.then(response => response.json())
+		.then(art => {
+			this.setState({
+				test: art,
+				route: "displaySearch",
+				nN: this.state.nN + 1,
+			})
+		})
+	}
+
 	render() {
-		if (this.state.randomsLoaded >= 3 && this.state.searchReply >= 3) {
-			console.log(this.state);
+		if (this.state.randomsLoaded >= 3 && this.state.route === "displaySearch") {
+			console.log('displaySearch', this.state);
 			return (
 		    	<div className="App">
 		    		<SearchBar className="sticky" onSearchChange={this.onSearchChange} />
 		    		<SearchResult theState={this.state} />
 			      	<div className="white">
-			      		<SquareCard theState={this.state.test0} />
+			      		<SquareCard theState={this.state.test} />
+			      		<Next singleFetch={this.singleFetch} />
 			    	</div>
-			    	<div className="lightGrey">
-			    		<SquareCard theState={this.state.test1} />
-			    	</div>
-			    	<div className="grey">
-			    		<SquareCard theState={this.state.test2} />
-		    		</div>
 		    	</div>   				
 			)
 		} else if (this.state.randomsLoaded >= 3) {	
