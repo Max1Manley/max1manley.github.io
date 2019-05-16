@@ -5,8 +5,37 @@ html {
 	font-size: 10px;
 }
 
-.flex{
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+body{
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.75rem;
+}
+
+.sticky {
+/*	position: sticky;
+	position: -webkit-sticky;
+	top: 0rem;	*/
+	
+/*	position: fixed;
+	align-items: left;*/
+}
+
+.white {
+	background-color: white;
+	width: 100%;
+	height: 900px;
+	position: relative;
+}
+
+.lightGrey{
+	background-color: rgba(121, 122, 124, .05);
+	width: 100%;
+	height: 900px;
+	position: relative;
+}
+
+.grey {
+	background-color: rgba(121, 122, 124, .1);
+	width: 100%;
+	height: 900px;
+	position: relative;
 }

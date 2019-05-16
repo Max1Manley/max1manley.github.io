@@ -1,25 +1,39 @@
+//Max Manley 2019
 import React, { Component } from 'react';
 import publicDomain from './publicDomain';
 import SearchBar from '../components/SearchBar';
+import SearchResult from '../components/SearchResult';
 import SquareCard from '../components/SquareCard';
 import './App.css';
 
-// http://api.openweathermap.org/data/2.5/weather?q=73013,us&APPID=727c2f55c3d9cc48f85080101f3b4ef0
 class App extends Component {
 	constructor () {
 		super();
 		this.state = {
 			randomsLoaded: 0,
+			random0: {},
 			random1: {},
 			random2: {},
-			random3: {},
-			searched: {},
+			searched: null,
 			searchfield: "",
+			searchReply: 0,
+			route: "",
+			test0: null,
+			test1: null,
+			test2: null,
 		}
 	}
 
 	componentWillMount() {	
 
+		fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${publicDomain[Math.floor(Math.random()*publicDomain.length)]}`)
+		.then (response => response.json())
+		.then (art => {
+			this.setState({
+				random0: art,
+				randomsLoaded: this.state.randomsLoaded + 1,
+			})
+		});	
 		fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${publicDomain[Math.floor(Math.random()*publicDomain.length)]}`)
 		.then (response => response.json())
 		.then (art => {
@@ -33,28 +47,9 @@ class App extends Component {
 		.then (art => {
 			this.setState({
 				random2: art,
-				randomsLoaded: this.state.randomsLoaded + 2,
+				randomsLoaded: this.state.randomsLoaded + 1,
 			})
 		});	
-		// fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${publicDomain[Math.floor(Math.random()*publicDomain.length)]}`)
-		// .then (response => response.json())
-		// .then (art => {
-		// 	this.setState({
-		// 		random3: art,
-		// 		randomsLoaded: this.state.randomsLoaded + 1,
-		// 	})
-		// });	
-
-
-		fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/441352')
-		.then (response => response.json())
-		.then (data => {
-			this.setState({
-				random3: data,
-			})
-		});	
-
-
 	}
 
 	onSearchChange = (event) => {
@@ -65,28 +60,77 @@ class App extends Component {
 			.then (art => {
 				this.setState({
 					searched: art,
+					
+				})
+				fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[0]}`)
+				.then(response => response.json())
+				.then(art => {
+					this.setState({
+						test0: art,
+						searchReply: this.state.searchReply + 1,
+					})
+				})
+				fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[1]}`)
+				.then(response => response.json())
+				.then(art => {
+					this.setState({
+						test1: art,
+						searchReply: this.state.searchReply + 1,
+					})
+				})
+				fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[2]}`)
+				.then(response => response.json())
+				.then(art => {
+					this.setState({
+						test2: art,
+						searchReply: this.state.searchReply + 1,
+					})
 				})
 			});					
 		}
 	}
 
-	render() { 
-    	if (this.state.randomsLoaded >= 3) {	
-    		console.log(this.state.random3.tags)
+	render() {
+		if (this.state.randomsLoaded >= 3 && this.state.searchReply >= 3) {
+			console.log(this.state);
+			return (
+		    	<div className="App">
+		    		<SearchBar className="sticky" onSearchChange={this.onSearchChange} />
+		    		<SearchResult theState={this.state} />
+			      	<div className="white">
+			      		<SquareCard theState={this.state.test0} />
+			    	</div>
+			    	<div className="lightGrey">
+			    		<SquareCard theState={this.state.test1} />
+			    	</div>
+			    	<div className="grey">
+			    		<SquareCard theState={this.state.test2} />
+		    		</div>
+		    	</div>   				
+			)
+		} else if (this.state.randomsLoaded >= 3) {	
+    		console.log(this.state);
         	return (
 		    	<div className="App">
-			      	<SearchBar onSearchChange={this.onSearchChange} />
-			      	<div className="flex">
-				      	<SquareCard theState={this.state.random1}/>
-				      	<SquareCard theState={this.state.random2}/>
-				      	<SquareCard theState={this.state.random3}/>
-				    </div>
-		      	</div>    			
+			      	<SearchBar className="sticky" onSearchChange={this.onSearchChange} />
+			      	<div className="white">
+			      		<SquareCard theState={this.state.random0} />
+			    	</div>
+			    	<div className="lightGrey">
+			    		<SquareCard theState={this.state.random1} />
+			    	</div>
+			    	<div className="grey">
+			    		<SquareCard theState={this.state.random2} />
+		    		</div>
+		    	</div>    			
     		)		
-    	} else {
-    		return <div> Loading... </div>
+    	}  
+
+    	else {
+    		return <div>Loading...</div>
     	}
 	}	
+
 	componentDidMount(){}		
 }
 

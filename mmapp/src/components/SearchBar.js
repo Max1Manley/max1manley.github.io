@@ -3,12 +3,10 @@ import './SearchBar.css';
 
 const SearchBar = ({ onSearchChange }) => {
 	return(
-		<div>
-			<div>
-				<input 
-				placeholder="Search Art" 
-				onKeyPress={onSearchChange} />
-			</div>
+		<div className="sticky">
+			<input 
+			placeholder="Search Met Museum"
+			onKeyPress={onSearchChange} />
 		</div>
 	);
 }

@@ -1,7 +1,16 @@
-input{
-	/*font-family: 'Roboto', sans-serif;*/
-	font-size: 5rem;
+input {
+	border-radius: 1.75rem;
+	background-color: rgba(121, 122, 124, .1);
+	padding: 1rem;
+	font-size: 2rem;
 	outline-style: none;
 	border: 0px;
-	border-bottom: .1rem solid black;
+	font-family: 'Roboto', sans-serif;
+	margin-top: 1rem;
 }
+
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; }
