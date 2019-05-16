@@ -9,7 +9,6 @@
 
 img{
 	border-radius: 4px;
-	box-shadow: 3px 5px 5px #888888;
   /*margin-top: auto;*/
 }
 
@@ -17,7 +16,6 @@ ul {
   list-style-type: none;
   text-align: left;
   background-color: white;
-  box-shadow: 3px 5px 5px #888888;
   padding: 1rem;
   width: 300px;
   vertical-align: center;

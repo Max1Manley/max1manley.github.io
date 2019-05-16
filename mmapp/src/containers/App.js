@@ -7,6 +7,10 @@ import SquareCard from '../components/SquareCard';
 import Next from '../components/Next';
 import './App.css';
 
+//cleanup CSS in searchResults route
+
+var nN = 0;
+
 class App extends Component {
 	constructor () {
 		super();
@@ -15,7 +19,6 @@ class App extends Component {
 			random0: {},
 			random1: {},
 			random2: {},
-			nN: 0,
 			searched: null,
 			route: "",
 			test: null,
@@ -50,7 +53,6 @@ class App extends Component {
 		});	
 	}
 
-
 	onSearchChange = (event) => {
 		console.log('events is happening');
 		if (event.key === 'Enter'){
@@ -60,38 +62,60 @@ class App extends Component {
 				this.setState({
 					searched: art,	
 				})
-				this.singleFetch();
+				fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[0]}`)
+				.then(response => response.json())
+				.then(art => {
+					this.setState({
+						test: art,
+						route: "displaySearch",
+					})
+				})
 			})					
 		}
 	}
 
 	singleFetch = () =>{
-		fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[this.state.nN]}`)
-		.then(response => response.json())
-		.then(art => {
-			this.setState({
-				test: art,
-				route: "displaySearch",
-				nN: this.state.nN + 1,
-			})
-		})
+		if (nN < this.state.searched.objectIDs.length - 1){
+			fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[nN+1]}`)
+			.then(response => response.json())
+			.then(art => {
+				this.setState({
+					test: art,
+				})
+				nN++;
+			})			
+		}
+	}
+
+	backFetch = () =>{
+		if(nN > 0){
+			fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[nN-1]}`)
+			.then(response => response.json())
+			.then(art => {
+				this.setState({
+					test: art,
+				})
+				nN--;
+			})			
+		}
 	}
 
 	render() {
 		if (this.state.randomsLoaded >= 3 && this.state.route === "displaySearch") {
-			console.log('displaySearch', this.state);
+			console.log('displaySearch', this.state.searched.objectIDs.length);
 			return (
 		    	<div className="App">
-		    		<SearchBar className="sticky" onSearchChange={this.onSearchChange} />
+		    		<SearchBar onSearchChange={this.onSearchChange} />
 		    		<SearchResult theState={this.state} />
 			      	<div className="white">
 			      		<SquareCard theState={this.state.test} />
-			      		<Next singleFetch={this.singleFetch} />
+			      		<Next Fetch={this.backFetch} />
+			      		<Next Fetch={this.singleFetch} />
 			    	</div>
 		    	</div>   				
 			)
 		} else if (this.state.randomsLoaded >= 3) {	
-    		console.log(this.state);
+    		console.log('ranodms loaded', this.state);
         	return (
 		    	<div className="App">
 			      	<SearchBar className="sticky" onSearchChange={this.onSearchChange} />
@@ -106,16 +130,12 @@ class App extends Component {
 		    		</div>
 		    	</div>    			
     		)		
-    	}  
-
-    	else {
+    	} else {
     		return <div>Loading...</div>
     	}
 	}	
 
 	componentDidMount(){}		
 }
-
-
 
 export default App;

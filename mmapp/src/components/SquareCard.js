@@ -18,12 +18,13 @@ const SquareCard = ({theState}) => {
 		<div className="container">
 			<a href={theState.primaryImage} target="_blank">
 				<img 
+				className="shadow"
 				height={window.innerHeight / 1.35}
 				width="auto"
 				alt="Not available"
 				src={theState.primaryImageSmall} />
 			</a>
-			<ul>
+			<ul className="shadow">
 			<li><strong>{adn} </strong>{abd}</li>
 			<li><strong className="ital">{tst}</strong>{tsod}</li>
 			<li className="smalltxt">{theState.medium}</li>

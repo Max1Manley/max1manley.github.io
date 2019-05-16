@@ -1,9 +1,12 @@
 import React from 'react';
+import './Next.css';
+import arrowF from './arrowF.png';
+//https://cdn2.iconfinder.com/data/icons/arrows-vol-1-1/32/right2-512.png
 
-const Next = ({ singleFetch }) => {
+const Next = ({ Fetch }) => {
 	return(
 		<div>
-			<img onClick={singleFetch} alt="next" height="50px" src="https://cdn2.iconfinder.com/data/icons/arrows-vol-1-1/32/right2-512.png" />
+			<img className="hg" onClick={Fetch} alt="next" height="50px" src={arrowF} />
 		</div>
 	)
 }
