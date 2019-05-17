@@ -5,6 +5,7 @@ import SearchBar from '../components/SearchBar';
 import SearchResult from '../components/SearchResult';
 import SquareCard from '../components/SquareCard';
 import Next from '../components/Next';
+import Back from '../components/Back';
 import './App.css';
 
 //cleanup CSS in searchResults route
@@ -107,9 +108,9 @@ class App extends Component {
 		    	<div className="App">
 		    		<SearchBar onSearchChange={this.onSearchChange} />
 		    		<SearchResult theState={this.state} />
-			      	<div className="white">
+			      	<div className="flexVC">
+			      		<Back Fetch={this.backFetch} />
 			      		<SquareCard theState={this.state.test} />
-			      		<Next Fetch={this.backFetch} />
 			      		<Next Fetch={this.singleFetch} />
 			    	</div>
 		    	</div>   				
