@@ -2,13 +2,13 @@
 import React, { Component } from 'react';
 import publicDomain from './publicDomain';
 import SearchBar from '../components/SearchBar';
-import SearchResult from '../components/SearchResult';
+import Tracker from '../components/Tracker';
 import SquareCard from '../components/SquareCard';
 import Next from '../components/Next';
 import Back from '../components/Back';
 import './App.css';
 
-//cleanup CSS in searchResults route
+//figure out searchbar / future home button placement
 
 var nN = 0;
 
@@ -23,6 +23,7 @@ class App extends Component {
 			searched: null,
 			route: "",
 			test: null,
+			nN: 0,
 		}
 	}
 
@@ -57,6 +58,8 @@ class App extends Component {
 	onSearchChange = (event) => {
 		console.log('events is happening');
 		if (event.key === 'Enter'){
+			this.setState({	nN: 0, });
+			nN = 0;
 			fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${event.target.value}`)
 			.then (response => response.json())
 			.then (art => {
@@ -82,6 +85,7 @@ class App extends Component {
 			.then(art => {
 				this.setState({
 					test: art,
+					nN: this.state.nN + 1,
 				})
 				nN++;
 			})			
@@ -95,6 +99,7 @@ class App extends Component {
 			.then(art => {
 				this.setState({
 					test: art,
+					nN: this.state.nN - 1,
 				})
 				nN--;
 			})			
@@ -107,7 +112,7 @@ class App extends Component {
 			return (
 		    	<div className="App">
 		    		<SearchBar onSearchChange={this.onSearchChange} />
-		    		<SearchResult theState={this.state} />
+		    		<Tracker nN={this.state.nN} theState={this.state} />
 			      	<div className="flexVC">
 			      		<Back Fetch={this.backFetch} />
 			      		<SquareCard theState={this.state.test} />
@@ -119,14 +124,14 @@ class App extends Component {
     		console.log('ranodms loaded', this.state);
         	return (
 		    	<div className="App">
-			      	<SearchBar className="sticky" onSearchChange={this.onSearchChange} />
-			      	<div className="white">
+			      	<SearchBar onSearchChange={this.onSearchChange} />
+			      	<div className="white flexVC">
 			      		<SquareCard theState={this.state.random0} />
 			    	</div>
-			    	<div className="lightGrey">
+			    	<div className="lightGrey flexVC">
 			    		<SquareCard theState={this.state.random1} />
 			    	</div>
-			    	<div className="grey">
+			    	<div className="grey flexVC">
 			    		<SquareCard theState={this.state.random2} />
 		    		</div>
 		    	</div>    			
@@ -138,5 +143,11 @@ class App extends Component {
 
 	componentDidMount(){}		
 }
+
+//Artist I've learned of/more about while making this.
+//henri de toulouse-lautrec
+//Gustave Moreau
+//el greco
+
 
 export default App;

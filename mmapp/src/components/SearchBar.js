@@ -3,7 +3,7 @@ import './SearchBar.css';
 
 const SearchBar = ({ onSearchChange }) => {
 	return(
-		<div className="sticky">
+		<div>
 			<input 
 			placeholder="Search Met Museum"
 			onKeyPress={onSearchChange} />

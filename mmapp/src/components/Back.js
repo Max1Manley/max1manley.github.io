@@ -6,7 +6,7 @@ import arrowB from './arrowB.png';
 const Back = ({ Fetch }) => {
 	return(
 		<div>
-			<img className="hg" onClick={Fetch} alt="back" height="100px" width="60px" src={arrowB} />
+			<img className="hg" onClick={Fetch} alt="back" height="50px" src={arrowB} />
 		</div>
 	)
 }

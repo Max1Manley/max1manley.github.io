@@ -10,8 +10,8 @@ body{
 	font-size: 1.75rem;
 }
 
-.shadow {
-	box-shadow: 3px 5px 5px #888888;
+.App {
+	align-items: center;
 }
 
 .flexVC {
@@ -20,32 +20,20 @@ body{
 	align-items: center;
 }
 
-.sticky {
-/*	position: sticky;
-	position: -webkit-sticky;
-	top: 0rem;	*/
-	
-/*	position: fixed;
-	align-items: left;*/
-}
-
 .white {
 	background-color: white;
 	width: 100%;
 	height: 900px;
-	position: relative;
 }
 
 .lightGrey{
 	background-color: rgba(121, 122, 124, .05);
 	width: 100%;
 	height: 900px;
-	position: relative;
 }
 
 .grey {
 	background-color: rgba(121, 122, 124, .1);
 	width: 100%;
 	height: 900px;
-	position: relative;
 }

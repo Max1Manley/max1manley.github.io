@@ -1,12 +1,14 @@
 input {
-	border-radius: 1.75rem;
+	border-radius: .4rem;
 	background-color: rgba(121, 122, 124, .1);
-	padding: 1rem;
-	font-size: 2rem;
+	padding: .5rem;
+	font-size: 1.5rem;
 	outline-style: none;
 	border: 0px;
 	font-family: 'Roboto', sans-serif;
-	margin-top: 1rem;
+	width: 33%;
+	position: fixed;
+	margin-top: 0rem;
 }
 
 

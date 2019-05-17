@@ -1,9 +1,7 @@
 import React from 'react';
 import './SquareCard.css';
 
-
-
-const SquareCard = ({theState}) => {
+const SquareCard = ({ theState }) => {
 	let adn;
 	if (theState.artistDisplayName) { adn = theState.artistDisplayName } else { adn = 'Unknown Artist' };
 	let abd;
@@ -21,7 +19,7 @@ const SquareCard = ({theState}) => {
 				className="shadow"
 				height={window.innerHeight / 1.35}
 				width="auto"
-				alt="Not available"
+				alt="Not Public Domain"
 				src={theState.primaryImageSmall} />
 			</a>
 			<ul className="shadow">
