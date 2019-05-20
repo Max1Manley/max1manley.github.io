@@ -1,7 +1,6 @@
 html {
 	background-color: white;
 	color: black;
-	text-align: center;
 	font-size: 10px;
 }
 
@@ -10,14 +9,35 @@ body{
 	font-size: 1.75rem;
 }
 
-.App {
-	align-items: center;
+input {
+	border-radius: .4rem;
+	background-color: rgba(121, 122, 124, .1);
+	padding: .5rem;
+	font-size: 1.5rem;
+	outline-style: none;
+	border: 0px;
+	font-family: 'Roboto', sans-serif;
+	width: 25rem;
+	text-align: center;
 }
 
-.flexVC {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
+a {
+	text-decoration: underline;
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+	color: rgba(121, 122, 124, 1);
+}
+
+.about {
+	margin-top: 7.25rem;
 }
 
 .white {
@@ -36,4 +56,46 @@ body{
 	background-color: rgba(121, 122, 124, .1);
 	width: 100%;
 	height: 900px;
+}
+
+.flexVC {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.air {
+	position: absolute; 
+	right: 2rem;
+}
+
+.leftPadding {
+	padding-left: 2rem;
+}
+
+.topMargin {
+	margin-top: 1rem;
+}
+
+.ital {
+  font-style: italic;
+}
+
+.smalltxt {
+  font-size: 1.5rem;
+}
+
+.center {
+	text-align: center;
+}
+
+.pointer:hover {
+	cursor: pointer;
+	color: rgba(121, 122, 124, 1);
+}
+
+.hg:hover {
+	transition: transform .4s;
+	transform: scale(1.2);
+	cursor: pointer;
 }

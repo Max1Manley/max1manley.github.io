@@ -1,5 +1,4 @@
 import React from 'react';
-import './Next.css';
 import arrowF from './arrowF.png';
 //https://cdn2.iconfinder.com/data/icons/arrows-vol-1-1/32/right2-512.png
 

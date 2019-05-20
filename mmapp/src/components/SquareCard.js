@@ -1,19 +1,26 @@
 import React from 'react';
 import './SquareCard.css';
 
-const SquareCard = ({ theState }) => {
-	let adn;
-	if (theState.artistDisplayName) { adn = theState.artistDisplayName } else { adn = 'Unknown Artist' };
-	let abd;
+const SquareCard = ({ theState, nN, searchLength, route}) => {
+
+	//checking if information is available, if true then it is displayed
+	let adn = "Unknown Artist";
+	if (theState.artistDisplayName) { adn = theState.artistDisplayName };
+	let abd = "";
 	if (theState.artistBeginDate && theState.artistEndDate) { abd = `(${theState.artistBeginDate}-${theState.artistEndDate})` }
-	else if (theState.artistBeginDate) { abd = `(b. ${theState.artistBeginDate})` } else { abd = "" };
-	let tst;
-	if (theState.title) {tst = `${theState.title}`} else { tst = "" };
-	let tsod;
-	if (theState.objectDate) { tsod = `, ${theState.objectDate}` } else { tsod = "" };
+	else if (theState.artistBeginDate) { abd = `(b. ${theState.artistBeginDate})` };
+	let tst = "";
+	if (theState.title) {tst = `${theState.title}`};
+	let tsod = "";
+	if (theState.objectDate) { tsod = `, ${theState.objectDate}` };
+	let searchTotal = "";	
+	if (route === "displaySearch") { searchTotal = `${nN+1} of ${searchLength}` };
 
 	return(
-		<div className="container">
+		<div className="container">		
+			<div className="center">
+				{searchTotal}
+			</div>
 			<a href={theState.primaryImage} target="_blank">
 				<img 
 				className="shadow"
@@ -23,9 +30,9 @@ const SquareCard = ({ theState }) => {
 				src={theState.primaryImageSmall} />
 			</a>
 			<ul className="shadow">
-			<li><strong>{adn} </strong>{abd}</li>
-			<li><strong className="ital">{tst}</strong>{tsod}</li>
-			<li className="smalltxt">{theState.medium}</li>
+				<li><strong>{adn} </strong>{abd}</li>
+				<li><strong className="ital">{tst}</strong>{tsod}</li>
+				<li className="smalltxt">{theState.medium}</li>
 			</ul>
 		</div>
 	)

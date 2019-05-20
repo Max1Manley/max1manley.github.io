@@ -1,14 +1,14 @@
 //Max Manley 2019
 import React, { Component } from 'react';
 import publicDomain from './publicDomain';
-import SearchBar from '../components/SearchBar';
-import Tracker from '../components/Tracker';
 import SquareCard from '../components/SquareCard';
+import NavBarSearched from '../components/NavBarSearched';
 import Next from '../components/Next';
 import Back from '../components/Back';
+import About from '../components/About';
 import './App.css';
 
-//figure out searchbar / future home button placement
+//metropolitan red #e4002b
 
 var nN = 0;
 
@@ -27,6 +27,7 @@ class App extends Component {
 		}
 	}
 
+	//fetching random works of art from public domain array
 	componentWillMount() {	
 
 		fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${publicDomain[Math.floor(Math.random()*publicDomain.length)]}`)
@@ -55,8 +56,9 @@ class App extends Component {
 		});	
 	}
 
+	//first fetch returns array of objectIDs related to query and saves list in state
+	//second fetch returns data of first item in array
 	onSearchChange = (event) => {
-		console.log('events is happening');
 		if (event.key === 'Enter'){
 			this.setState({	nN: 0, });
 			nN = 0;
@@ -78,6 +80,7 @@ class App extends Component {
 		}
 	}
 
+	//displays next item in the this.state.searched.objectIDs array
 	singleFetch = () =>{
 		if (nN < this.state.searched.objectIDs.length - 1){
 			fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[nN+1]}`)
@@ -92,6 +95,7 @@ class App extends Component {
 		}
 	}
 
+	//displays previous item in the this.state.searched.objectIDs array
 	backFetch = () =>{
 		if(nN > 0){
 			fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[nN-1]}`)
@@ -106,38 +110,68 @@ class App extends Component {
 		}
 	}
 
+	onClickHome = () => {
+		this.setState({ route: "", });
+	}
+
+	onClickAbout = () => {
+		this.setState({ route: "About" });
+	}
+
 	render() {
+		//renders search result
 		if (this.state.randomsLoaded >= 3 && this.state.route === "displaySearch") {
-			console.log('displaySearch', this.state.searched.objectIDs.length);
 			return (
 		    	<div className="App">
-		    		<SearchBar onSearchChange={this.onSearchChange} />
-		    		<Tracker nN={this.state.nN} theState={this.state} />
+
+		    			<NavBarSearched
+		    			onClickAbout={this.onClickAbout}
+		    			onClickHome={this.onClickHome}
+		    			onSearchChange={this.onSearchChange} />
+
 			      	<div className="flexVC">
 			      		<Back Fetch={this.backFetch} />
-			      		<SquareCard theState={this.state.test} />
+			      		<SquareCard nN={this.state.nN} route={this.state.route} searchLength={this.state.searched.objectIDs.length} theState={this.state.test} />
 			      		<Next Fetch={this.singleFetch} />
 			    	</div>
 		    	</div>   				
 			)
+		} else if (this.state.randomsLoaded >= 3 && this.state.route === "About"){
+		//renders the about section
+			return (
+				<div className="App">
+	    			<NavBarSearched
+	    			onClickAbout={this.onClickAbout}
+	    			onClickHome={this.onClickHome}
+	    			onSearchChange={this.onSearchChange} />
+
+					<About />
+				</div>
+			)
+
 		} else if (this.state.randomsLoaded >= 3) {	
-    		console.log('ranodms loaded', this.state);
+		//renders home sections with 3 randomly chosen works of art
         	return (
 		    	<div className="App">
-			      	<SearchBar onSearchChange={this.onSearchChange} />
+
+	    			<NavBarSearched
+	    			onClickAbout={this.onClickAbout}
+	    			onClickHome={this.onClickHome}
+	    			onSearchChange={this.onSearchChange} />
+
 			      	<div className="white flexVC">
-			      		<SquareCard theState={this.state.random0} />
+			      		<SquareCard nN={this.state.nN} route={this.state.route}  theState={this.state.random0} />
 			    	</div>
 			    	<div className="lightGrey flexVC">
-			    		<SquareCard theState={this.state.random1} />
+			    		<SquareCard nN={this.state.nN} route={this.state.route} theState={this.state.random1} />
 			    	</div>
 			    	<div className="grey flexVC">
-			    		<SquareCard theState={this.state.random2} />
+			    		<SquareCard nN={this.state.nN} route={this.state.route} theState={this.state.random2} />
 		    		</div>
 		    	</div>    			
     		)		
     	} else {
-    		return <div>Loading...</div>
+    		return <div className="flexVC">Loading...</div>
     	}
 	}	
 

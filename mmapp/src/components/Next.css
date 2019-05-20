@@ -1,5 +1,0 @@
-.hg:hover {
-	transition: transform .4s;
-	transform: scale(1.2);
-	cursor: pointer;
-}
