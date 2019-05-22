@@ -1,3 +1,4 @@
+/*font size set at 10, everything else based off that via rem*/
 html {
 	background-color: white;
 	color: black;
@@ -21,10 +22,28 @@ input {
 	text-align: center;
 }
 
+/*placeholder text disappears when clicked on*/
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
 input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
 input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
+ul {
+  border-radius: .4rem;
+  list-style-type: none;
+  text-align: left;
+  background-color: white;
+  padding: 1rem;
+  width: 32.5rem;
+  vertical-align: center;
+}
+
+.artImg{
+	border-radius: .4rem;
+	height: 46.5rem;
+	width: auto;
+}
+
 
 a {
 	text-decoration: underline;
@@ -43,25 +62,61 @@ a:hover {
 .white {
 	background-color: white;
 	width: 100%;
-	height: 900px;
+	height: 90rem;
 }
 
 .lightGrey{
 	background-color: rgba(121, 122, 124, .05);
 	width: 100%;
-	height: 900px;
+	height: 90rem;
 }
 
 .grey {
 	background-color: rgba(121, 122, 124, .1);
 	width: 100%;
-	height: 900px;
+	height: 90rem;
+}
+
+/*shrinking artwork and input for mobile devices*/
+@media (max-width: 760px) {
+	.artImg {
+		width: 25rem;
+		height: auto;
+	}
+	input{
+		width: 15rem;
+	}
+	ul {
+		width: 23rem;
+	}
+	.white {
+		height: 60rem;
+	}
+
+	.lightGrey{
+		height: 60rem;
+	}
+
+	.grey {
+		height: 60rem;
+	}
+	
 }
 
 .flexVC {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+}
+
+.topBar {
+	position: sticky;
+	top: 1rem;
+	z-index: 1;
+}
+
+.moreTopMargin {
+	margin-top: 5rem;
 }
 
 .air {
@@ -72,6 +127,7 @@ a:hover {
 .leftPadding {
 	padding-left: 2rem;
 }
+
 
 .topMargin {
 	margin-top: 1rem;
@@ -87,6 +143,14 @@ a:hover {
 
 .center {
 	text-align: center;
+}
+
+.container {
+  background-color: transparent;
+}
+
+.shadow {
+  box-shadow: 3px 5px 5px #888888;
 }
 
 .pointer:hover {

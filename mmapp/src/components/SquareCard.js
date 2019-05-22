@@ -1,5 +1,4 @@
 import React from 'react';
-import './SquareCard.css';
 
 const SquareCard = ({ theState, nN, searchLength, route}) => {
 
@@ -23,9 +22,7 @@ const SquareCard = ({ theState, nN, searchLength, route}) => {
 			</div>
 			<a href={theState.primaryImage} target="_blank">
 				<img 
-				className="shadow"
-				height={window.innerHeight / 1.35}
-				width="auto"
+				className="shadow artImg"
 				alt="Not Public Domain"
 				src={theState.primaryImageSmall} />
 			</a>

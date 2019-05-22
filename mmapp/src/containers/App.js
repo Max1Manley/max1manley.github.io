@@ -68,14 +68,20 @@ class App extends Component {
 				this.setState({
 					searched: art,	
 				})
-				fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[0]}`)
-				.then(response => response.json())
-				.then(art => {
-					this.setState({
-						test: art,
-						route: "displaySearch",
-					})
-				})
+				if (this.state.searched.objectIDs) {
+					fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.state.searched.objectIDs[0]}`)
+					.then(response => response.json())
+					.then(art => {
+						this.setState({
+							test: art,
+							route: "displaySearch",
+						})
+					})					
+				} else {
+					alert("No Matching Results");
+					this.setState({ route: "" });
+				}
+
 			})					
 		}
 	}
@@ -120,7 +126,7 @@ class App extends Component {
 
 	render() {
 		//renders search result
-		if (this.state.randomsLoaded >= 3 && this.state.route === "displaySearch") {
+		if (this.state.randomsLoaded >= 3 && this.state.route === "displaySearch" &&  this.state.searched.objectIDs) {
 			return (
 		    	<div className="App">
 
@@ -129,9 +135,13 @@ class App extends Component {
 		    			onClickHome={this.onClickHome}
 		    			onSearchChange={this.onSearchChange} />
 
-			      	<div className="flexVC">
+			      	<div className="flexVC moreTopMargin">
 			      		<Back Fetch={this.backFetch} />
-			      		<SquareCard nN={this.state.nN} route={this.state.route} searchLength={this.state.searched.objectIDs.length} theState={this.state.test} />
+			      		<SquareCard 
+			      		nN={this.state.nN} 
+			      		route={this.state.route} 
+			      		searchLength={this.state.searched.objectIDs.length} 
+			      		theState={this.state.test} />
 			      		<Next Fetch={this.singleFetch} />
 			    	</div>
 		    	</div>   				
@@ -160,13 +170,22 @@ class App extends Component {
 	    			onSearchChange={this.onSearchChange} />
 
 			      	<div className="white flexVC">
-			      		<SquareCard nN={this.state.nN} route={this.state.route}  theState={this.state.random0} />
+			      		<SquareCard 
+			      		nN={this.state.nN} 
+			      		route={this.state.route}  
+			      		theState={this.state.random0} />
 			    	</div>
 			    	<div className="lightGrey flexVC">
-			    		<SquareCard nN={this.state.nN} route={this.state.route} theState={this.state.random1} />
+			    		<SquareCard 
+			    		nN={this.state.nN} 
+			    		route={this.state.route} 
+			    		theState={this.state.random1} />
 			    	</div>
 			    	<div className="grey flexVC">
-			    		<SquareCard nN={this.state.nN} route={this.state.route} theState={this.state.random2} />
+			    		<SquareCard 
+			    		nN={this.state.nN} 
+			    		route={this.state.route} 
+			    		theState={this.state.random2} />
 		    		</div>
 		    	</div>    			
     		)		
