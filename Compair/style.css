@@ -23,10 +23,6 @@ body {
 	font-family: 'Saira', sans-serif;
 }
 
-.header {
-	
-}
-
 .Comp {
 	color: rgba(57, 182, 255, 1);
 	font-size: 4.2rem;
@@ -73,6 +69,8 @@ body {
 	background-color: rgba(255, 130, 57, 1);
 	border-radius: 3rem;
 }
+
+
 
 input {
 	border: 0rem .1rem .1rem 0rem;
@@ -122,11 +120,11 @@ input {
 	font-size: 3rem;
 }
 
+#optionList {
+	visibility: hidden;
+}
+
 img {
 	height: 7rem;
 	width: 7rem;
-}
-
-.iconRoom {
-	
 }

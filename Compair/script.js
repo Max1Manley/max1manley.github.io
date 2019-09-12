@@ -4,6 +4,7 @@ let c1input = document.getElementById('c1input');
 let c1temp = document.getElementById('c1temp');
 let c1humid = document.getElementById('c1humid');
 let c1wind = document.getElementById('c1wind');
+let c1icon = document.getElementById('c1icon');
 
 let c2temp = document.getElementById('c2temp');
 let c2humid = document.getElementById('c2humid');
@@ -13,12 +14,11 @@ let c3input = document.getElementById('c3input');
 let c3temp = document.getElementById('c3temp');
 let c3humid = document.getElementById('c3humid');
 let c3wind = document.getElementById('c3wind');
-
-let c1icon = document.getElementById('c1icon');
 let c3icon = document.getElementById('c3icon');
 
-let api = 'https://api.openweathermap.org/data/2.5/weather?q=';
-let apiKeyAndUnits = '&APPID=727c2f55c3d9cc48f85080101f3b4ef0&units=imperial';
+c1input.value = "";
+c3input.value = "";
+//myForm.optionList.selectedIndex = 0;
 
 const handleOption = (myForm) =>{
 	if (myForm.optionList.selectedIndex === 0){
@@ -53,6 +53,8 @@ const weatherAsk = (n) => {
 	}
 
 	//Setting up API URL
+	let api = 'https://api.openweathermap.org/data/2.5/weather?q=';
+	let apiKeyAndUnits = '&APPID=727c2f55c3d9cc48f85080101f3b4ef0&units=imperial';
 	let city = input.value;
 	const url = api + city + apiKeyAndUnits;
 
@@ -61,10 +63,12 @@ const weatherAsk = (n) => {
 	.then((res) => res.json())
 	.then(function(data){
 
+		console.log(data);
+
 		//Creates icon right of temp
 		Cicon.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
 		
-		console.log(data);
+		
 		temperature.innerHTML = Math.round(data.main.temp) + "°";
 		humid.innerHTML = Math.round(data.main.humidity) + '%';
 
