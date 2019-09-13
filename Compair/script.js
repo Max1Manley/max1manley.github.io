@@ -18,15 +18,6 @@ let c3icon = document.getElementById('c3icon');
 
 c1input.value = "";
 c3input.value = "";
-//myForm.optionList.selectedIndex = 0;
-
-const handleOption = (myForm) =>{
-	if (myForm.optionList.selectedIndex === 0){
-		api = 'https://api.openweathermap.org/data/2.5/weather?q=';
-	} else if (myForm.optionList.selectedIndex === 1){
-		api = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-	}
-}
 
 const weatherAsk = (n) => {
 	
@@ -103,7 +94,7 @@ const weatherAsk = (n) => {
 	//Alert Error
 	.catch(function(error){
 		console.log(JSON.stringify(error))
-		alert('City not found. Enter only either city name, or Zip.');
+		alert('City not found. Please enter only city name.');
 	})
 }
 
@@ -157,3 +148,13 @@ const calculate = () => {
 		c2wind.innerHTML = Math.abs(parseFloat(c1wind.innerHTML) - parseFloat(c3wind.innerHTML)) + 'mph';
 	}
 }
+
+//myForm.optionList.selectedIndex = 0;
+
+// const handleOption = (myForm) =>{
+// 	if (myForm.optionList.selectedIndex === 0){
+// 		api = 'https://api.openweathermap.org/data/2.5/weather?q=';
+// 	} else if (myForm.optionList.selectedIndex === 1){
+// 		api = 'https://api.openweathermap.org/data/2.5/weather?zip=';
+// 	}
+// }
